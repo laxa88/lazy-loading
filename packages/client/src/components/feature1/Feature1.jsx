@@ -1,14 +1,10 @@
 import { connect } from 'react-redux';
-import Loadable from 'react-loadable';
 import React from 'react';
+
+import { Feature2 } from '../feature2';
 
 import * as actions from './actions';
 import * as selectors from './selectors';
-
-const Feature2 = Loadable({
-  loader: () => import('../feature2/Feature2'),
-  loading: () => <div>Loading</div>,
-});
 
 const Feature1 = ({
   name,
@@ -17,11 +13,15 @@ const Feature1 = ({
   setName,
   setEmail,
   fetchUser,
+  loadFeature2,
 }) => (
   <div>
     Hello, <input value={name} onChange={e => setName(e.target.value)} />! Your
     email is <input value={email} onChange={e => setEmail(e.target.value)} />.
-    <button onClick={() => fetchUser()}>Click to fetch user</button>
+    <button onClick={() => fetchUser()}>
+      Click to fetch user and lazy load component
+    </button>
+    <button onClick={() => loadFeature2()}>Click to load feature2 files</button>
     {isFeature2Visible && <Feature2 />}
   </div>
 );
@@ -36,5 +36,6 @@ export default connect(
     setName: actions.setName,
     setEmail: actions.setEmail,
     fetchUser: actions.fetchUser,
+    loadFeature2: actions.loadFeature2,
   }
 )(Feature1);

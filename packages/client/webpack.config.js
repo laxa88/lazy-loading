@@ -6,6 +6,8 @@ module.exports = {
 
   entry: './src',
 
+  devtool: 'source-map',
+
   output: {
     filename: '[name].output.js',
     chunkFilename: '[name].chunk.js',

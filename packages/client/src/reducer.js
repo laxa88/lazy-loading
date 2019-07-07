@@ -3,14 +3,31 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import * as feature1 from './components/feature1';
-import * as feature2 from './components/feature2';
 
-const rootReducer = combineReducers({
+const baseReducer = {
   [feature1.NAME]: feature1.reducer,
-  [feature2.NAME]: feature2.reducer,
-});
+};
 
-export default createStore(
-  rootReducer,
+const asyncReducers = {};
+
+const store = createStore(
+  combineReducers(baseReducer),
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+export const addReducer = ({ name, reducer }) => {
+  if (asyncReducers[name]) {
+    console.warn('Replacing existing reducer!');
+  }
+
+  asyncReducers[name] = reducer;
+
+  store.replaceReducer(
+    combineReducers({
+      ...baseReducer,
+      ...asyncReducers,
+    })
+  );
+};
+
+export default store;

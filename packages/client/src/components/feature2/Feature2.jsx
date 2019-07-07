@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import * as actions from './actions';
 import * as selectors from './selectors';
+import './reducer';
 
 const Feature2 = ({ address1, address2, setAddress1, setAddress2 }) => (
   <div>

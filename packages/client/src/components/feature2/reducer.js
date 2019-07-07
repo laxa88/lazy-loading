@@ -1,13 +1,19 @@
 import { createReducerSetter, createReducer } from '../../redux';
+import { addReducer } from '../../reducer';
+import { NAME, actionSetAddress1 } from './constants';
 
-import * as actions from './actions';
+import { setAddress1, setAddress2 } from './actions';
 
 export const initialState = {
   address1: '20 light st.',
   address2: 'Kingsville, CA',
 };
 
-export default createReducer(initialState, {
-  [actions.setAddress1]: createReducerSetter('address1'),
-  [actions.setAddress2]: createReducerSetter('address2'),
+const reducer = createReducer(initialState, {
+  [setAddress1]: createReducerSetter('address1'),
+  [setAddress2]: createReducerSetter('address2'),
 });
+
+addReducer({ name: NAME, reducer });
+
+export default reducer;
