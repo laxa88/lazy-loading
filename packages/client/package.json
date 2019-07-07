@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "rm -rf dist | webpack"
   },
   "author": "LWY",
   "license": "ISC",

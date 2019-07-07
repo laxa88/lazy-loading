@@ -2,49 +2,30 @@ const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "production",
+  mode: 'production',
 
-  entry: "./src",
+  entry: './src',
 
   output: {
-    filename: "[name].output.js",
+    filename: '[name].output.js',
     chunkFilename: '[name].chunk.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
 
-  module : {
-    rules : [
-      {test : /\.(jsx|js)$/, use:'babel-loader'},
-      {test : /\.css$/, use:['style-loader', 'css-loader']}
-    ]
+  module: {
+    rules: [
+      { test: /\.(jsx|js)$/, use: 'babel-loader' },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+    ],
   },
 
   // Reference: https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758
   optimization: {
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
     },
 
     runtimeChunk: 'single',
-
-    splitChunks: {
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            // get the name. E.g. node_modules/packageName/not/this/part.js
-            // or node_modules/packageName
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-
-            // npm package names are URL-safe, but some servers don't like @ symbols
-            return `npm.${packageName.replace('@', '')}`;
-          },
-        },
-      },
-    },
   },
 
   resolve: {
@@ -53,7 +34,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template : 'template/index.html'
-    })
-  ]
+      template: 'template/index.html',
+    }),
+  ],
 };
