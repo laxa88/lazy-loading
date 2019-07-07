@@ -1,14 +1,19 @@
-const http = require('http');
+const app = require('express')();
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Server is online!\n');
+app.get('/', (req, res) => {
+  res.send('Server is online.');
 });
 
-server.listen(port, hostname, () => {
+app.get('/user', (req, res) => {
+  res.json({
+    name: 'akira',
+    email: 'hasegawa@hotmail.com'
+  });
+});
+
+server = app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
