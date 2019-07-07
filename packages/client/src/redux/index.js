@@ -6,6 +6,17 @@ export const createSetterActions = (namespace, propNames) =>
     return action;
   });
 
+export const createAction = (type, thunk) => {
+  const action = (...props) => dispatch => {
+    dispatch({ type });
+    dispatch(thunk(...props));
+  };
+
+  action.toString = () => type;
+
+  return action;
+};
+
 export const createReducer = (initialState, handlers) => (
   state = initialState,
   { type, ...rest }
