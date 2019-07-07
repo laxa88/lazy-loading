@@ -2,7 +2,10 @@ import { createSetterActions, createAction } from '../../redux';
 
 import { NAME } from './constants';
 
-export const [setName, setEmail] = createSetterActions(NAME, ['name', 'email']);
+export const [setName, setEmail, setFeature2Visible] = createSetterActions(
+  NAME,
+  ['name', 'email', 'feature2Visible']
+);
 
 export const fetchUser = createAction(
   NAME,
@@ -13,5 +16,6 @@ export const fetchUser = createAction(
 
     dispatch(setName(name));
     dispatch(setEmail(email));
+    dispatch(setFeature2Visible(true));
   }
 );
