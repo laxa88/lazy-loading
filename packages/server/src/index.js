@@ -19,9 +19,17 @@ app.get('/', (req, res) => {
 app.get('/user', (req, res) => {
   // simulate delay to test lazy-loading logic in client
   setTimeout(() => {
-    res.json({
+    res.status(200).json({
       name: 'akira',
       email: 'hasegawa@hotmail.com',
+    });
+  }, 1000);
+});
+
+app.get('/invalid', (req, res) => {
+  setTimeout(() => {
+    res.status(502).send({
+      message: 'dummy message',
     });
   }, 1000);
 });
