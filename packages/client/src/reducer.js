@@ -1,4 +1,6 @@
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 import * as feature1 from './components/feature1';
 import * as feature2 from './components/feature2';
@@ -10,5 +12,5 @@ const rootReducer = combineReducers({
 
 export default createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(applyMiddleware(thunk))
 );
