@@ -1,5 +1,6 @@
-import React from 'react';
+import '@babel/polyfill';
 import { Provider } from 'react-redux';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import store from './reducer';
