@@ -6,8 +6,8 @@ import * as selectors from './selectors';
 
 const Feature1 = ({ name, email, setName, setEmail }) => (
   <div>
-    Hello, <input value={name} onChange={e => setName(e.target.value)} />!
-    Your email is <input value={email} onChange={e => setEmail(e.target.value)} />.
+    Hello, <input value={name} onChange={e => setName(e.target.value)} />! Your
+    email is <input value={email} onChange={e => setEmail(e.target.value)} />.
   </div>
 );
 

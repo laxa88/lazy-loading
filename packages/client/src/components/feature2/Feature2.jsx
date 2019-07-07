@@ -7,11 +7,9 @@ import * as selectors from './selectors';
 const Feature2 = ({ address1, address2, setAddress1, setAddress2 }) => (
   <div>
     Your address is:
-
     <p>
       <input value={address1} onChange={e => setAddress1(e.target.value)} />
     </p>
-
     <p>
       <input value={address2} onChange={e => setAddress2(e.target.value)} />
     </p>

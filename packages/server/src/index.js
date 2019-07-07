@@ -12,7 +12,7 @@ app.get('/user', (req, res) => {
   setTimeout(() => {
     res.json({
       name: 'akira',
-      email: 'hasegawa@hotmail.com'
+      email: 'hasegawa@hotmail.com',
     });
   }, 1000);
 });
