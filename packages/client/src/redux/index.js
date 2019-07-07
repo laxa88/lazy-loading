@@ -6,10 +6,12 @@ export const createSetterActions = (namespace, propNames) =>
     return action;
   });
 
-export const createAction = (type, thunk) => {
+export const createAction = (namespace, actionType, fn) => {
+  const type = `${namespace}/${actionType}`;
+
   const action = (...props) => dispatch => {
     dispatch({ type });
-    dispatch(thunk(...props));
+    dispatch(fn(...props));
   };
 
   action.toString = () => type;
